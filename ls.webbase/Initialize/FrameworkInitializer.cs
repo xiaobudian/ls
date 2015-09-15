@@ -49,7 +49,7 @@ namespace ls.webbase
         /// <summary>
         /// 获取或设置 SignalR依赖注入初始化器
         /// </summary>
-        public ISignalRIocInitializer SignalRIocInitializer { get; set; }
+        //public ISignalRIocInitializer SignalRIocInitializer { get; set; }
 
         /// <summary>
         /// 获取或设置 数据日志初始化器
@@ -76,17 +76,18 @@ namespace ls.webbase
 
             DatabaseInitializer.Initialize();
 
-            //if (MvcIocInitializer != null)
-            //{
-            var builder = new ContainerBuilder();
-            builder.RegisterApiControllers(Assembly.GetExecutingAssembly());
-            builder.RegisterControllers(Assembly.GetExecutingAssembly());
-            var container = builder.Build();
-            var resolver = new AutofacWebApiDependencyResolver(container);
+            if (MvcIocInitializer != null)
+            {
+                MvcIocInitializer.Initialize();
+                //var builder = new ContainerBuilder();
+                //builder.RegisterApiControllers(Assembly.GetExecutingAssembly());
+                //builder.RegisterControllers(Assembly.GetExecutingAssembly());
+                //var container = builder.Build();
+                //var resolver = new AutofacWebApiDependencyResolver(container);
 
-            DependencyResolver.SetResolver(new AutofacDependencyResolver(container));
-            GlobalConfiguration.Configuration.DependencyResolver = resolver;
-            //}
+                //DependencyResolver.SetResolver(new AutofacDependencyResolver(container));
+                //GlobalConfiguration.Configuration.DependencyResolver = resolver;
+            }
             //if (WebApiIocInitializer != null)
             //{
             //    WebApiIocInitializer.Initialize();

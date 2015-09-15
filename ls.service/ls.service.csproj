@@ -52,6 +52,10 @@
       <Project>{66577dbe-e0af-4e87-a795-67682b472815}</Project>
       <Name>ls.context</Name>
     </ProjectReference>
+    <ProjectReference Include="..\ls.core\ls.core.csproj">
+      <Project>{eaefa544-df60-44f8-8f63-ee1d5de14e60}</Project>
+      <Name>ls.core</Name>
+    </ProjectReference>
     <ProjectReference Include="..\ls.data\ls.data.csproj">
       <Project>{86467968-4a59-44f9-aa3b-50ec21cbea41}</Project>
       <Name>ls.data</Name>

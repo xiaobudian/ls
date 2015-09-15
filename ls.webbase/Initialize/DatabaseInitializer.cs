@@ -1,4 +1,10 @@
-﻿using ls.core;
+﻿using ls.context;
+using ls.core;
+using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Reflection;
+using System.Linq;
 
 namespace ls.webbase
 {
@@ -19,7 +25,7 @@ namespace ls.webbase
         /// 获取或设置 实体映射程序集查找器
         /// </summary>
         public IAssemblyFinder MapperAssemblyFinder { get; set; }
-        
+
         /// <summary>
         /// 开始初始化数据库
         /// </summary>
@@ -40,7 +46,7 @@ namespace ls.webbase
             //}
             //foreach (DbContextConfig contextConfig in config.ContextConfigs)
             //{
-            //    DbContextInit(contextConfig);
+            DbContextInit();
             //}
         }
 
@@ -84,39 +90,37 @@ namespace ls.webbase
         /// 初始化数据上下文
         /// </summary>
         /// <param name="config">数据上下文配置信息</param>
-        //private static void DbContextInit(DbContextConfig config)
-        //{
-        //    if (!config.Enabled)
-        //    {
-        //        return;
-        //    }
-        //    DbContextInitializerBase initializer = CreateInitializer(config.InitializerConfig);
-        //    DbContextManager.Instance.RegisterInitializer(config.ContextType, initializer);
-        //}
+        private static void DbContextInit()
+        {
+            DbContextInitializerBase initializer = CreateInitializer();
+            DbContextManager.Instance.RegisterInitializer(typeof(DefaultDbContext), initializer);
+        }
 
-        //private static DbContextInitializerBase CreateInitializer(DbContextInitializerConfig config)
-        //{
-        //    Type initializerType = config.InitializerType;
-        //    DbContextInitializerBase initializer = Activator.CreateInstance(initializerType) as DbContextInitializerBase;
-        //    if (initializer == null)
-        //    {
-        //        throw new InvalidOperationException("类型“{0}”不是有效的上下文初始化类型".FormatWith(initializerType));
-        //    }
-        //    foreach (Assembly mapperAssembly in config.EntityMapperAssemblies)
-        //    {
-        //        if (initializer.MapperAssemblies.Contains(mapperAssembly))
-        //        {
-        //            continue;
-        //        }
-        //        initializer.MapperAssemblies.Add(mapperAssembly);
-        //    }
-        //    dynamic dynamicInitializer = initializer;
-        //    if (config.CreateDatabaseInitializerType != null)
-        //    {
-        //        dynamic createDatabaseInitializer = Activator.CreateInstance(config.CreateDatabaseInitializerType);
-        //        dynamicInitializer.CreateDatabaseInitializer = createDatabaseInitializer;
-        //    }
-        //    return (DbContextInitializerBase)dynamicInitializer;
-        //}
+        private static DbContextInitializerBase CreateInitializer()
+        {
+            DbContextInitializerBase initializer = new DefaultDbContextInitializer() as DbContextInitializerBase;
+            //if (initializer == null)
+            //{
+            //    throw new InvalidOperationException("类型“{0}”不是有效的上下文初始化类型");
+            //}
+            //ICollection<Assembly> EntityMapperAssemblies = null;
+            //string[] mapperFiles = "ls.context".Split(',');
+            //var a = mapperFiles.Select(fileName => fileName.EndsWith(".dll") ? fileName : fileName + ".dll");
+            //var b = a.Select(fileName => Path.Combine(AppDomain.CurrentDomain.RelativeSearchPath, fileName)).ToArray();
+            //EntityMapperAssemblies = //b.Select(Assembly.LoadFrom).ToList();
+            //var a = AppDomain.CurrentDomain.GetAssemblies();
+            //var b = a.SelectMany(assembly => assembly.GetTypes().Where(type => typeof(IEntityMapper).IsAssignableFrom(type) && !type.IsAbstract));
+            //EntityMapperAssemblies = b.Select(Assembly.LoadFrom).ToList();
+            //foreach (Assembly mapperAssembly in EntityMapperAssemblies)
+            //{
+            //    if (initializer.MapperAssemblies.Contains(mapperAssembly))
+            //    {
+            //        continue;
+            //    }
+            //    initializer.MapperAssemblies.Add(mapperAssembly);
+            //}
+
+            return initializer;
+        }
     }
 }

@@ -54,10 +54,10 @@ namespace ls.context
         {
             Type contextType = typeof(TDbContext);
             Expression<Func<IEntityMapper, bool>> predicate = m => m.DbContextType == contextType;
-            //if (contextType == typeof(DefaultDbContext))
-            //{
-            //    predicate = predicate.Or(m => m.DbContextType == null);
-            //}
+            if (contextType == typeof(DefaultDbContext))
+            {
+                predicate = predicate.Or(m => m.DbContextType == null);
+            }
             return entityMappers.Where(predicate.Compile());
         }
 
@@ -126,12 +126,16 @@ namespace ls.context
         /// </summary>
         private void EntityMappersInitialize()
         {
-            if (MapperAssemblies.Count == 0)
-            {
-                //throw new InvalidOperationException("上下文“{0}”初始化失败，请添加实体映射程序集".FormatWith(this.GetType().FullName));
-            }
+            //if (MapperAssemblies.Count == 0)
+            //{
+            //    //throw new InvalidOperationException("上下文“{0}”初始化失败，请添加实体映射程序集".FormatWith(this.GetType().FullName));
+            //}
+
+          
+
             Type baseType = typeof(IEntityMapper);
-            Type[] mapperTypes = MapperAssemblies.SelectMany(assembly => assembly.GetTypes())
+          
+            Type[] mapperTypes = AppDomain.CurrentDomain.GetAssemblies().SelectMany(assembly => assembly.GetTypes())
                 .Where(type => baseType.IsAssignableFrom(type) && type != baseType && !type.IsAbstract).ToArray();
             IEnumerable<IEntityMapper> entityMappers = mapperTypes.Select(type => Activator.CreateInstance(type) as IEntityMapper).ToList();
             entityMappers = EntityMappersFilter(entityMappers);

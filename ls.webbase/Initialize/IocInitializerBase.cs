@@ -48,8 +48,8 @@ namespace ls.webbase
         /// <param name="config">框架配置信息</param>
         public void Initialize()
         {
-            //Type[] dbContexTypes = config.DataConfig.ContextConfigs.Where(m => m.Enabled).Select(m => m.ContextType).ToArray();
-            //RegisterDbContextTypes(dbContexTypes, typeof(IUnitOfWork));
+            Type[] dbContexTypes = { typeof(DefaultDbContext) }; //config.DataConfig.ContextConfigs.Where(m => m.Enabled).Select(m => m.ContextType).ToArray();
+            RegisterDbContextTypes(dbContexTypes, typeof(IUnitOfWork));
 
             RegisterRepositoryType(typeof(Repository<,>), typeof(IRepository<,>));
 

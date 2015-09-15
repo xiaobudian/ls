@@ -43,7 +43,6 @@
     <Compile Include="Dependency\IIocResolver.cs" />
     <Compile Include="Dependency\ILifetimeScopeDependency.cs" />
     <Compile Include="Dependency\IMvcIocInitializer.cs" />
-    <Compile Include="Dependency\ISignalRIocInitializer.cs" />
     <Compile Include="Dependency\ISingletonDependency.cs" />
     <Compile Include="Dependency\ITransientDependency.cs" />
     <Compile Include="Dependency\IWebApiIocInitializer.cs" />

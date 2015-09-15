@@ -1,4 +1,5 @@
 ﻿using ls.common;
+using ls.core;
 using ls.data.dtos;
 using ls.data.models;
 using System;
@@ -10,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace ls.service.Int
 {
-    public interface IBlogService
+    public interface IBlogService : ILifetimeScopeDependency
     {
         IQueryable<Blog> Blogs { get; set; }
         bool CheckExists(Expression<Func<Blog, bool>> predicate, int id = 0);

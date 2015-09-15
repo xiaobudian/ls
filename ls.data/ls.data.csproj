@@ -52,6 +52,8 @@
   <ItemGroup>
     <Compile Include="dtos\BlogDto.cs" />
     <Compile Include="DtoMappers.cs" />
+    <Compile Include="ModelConfigurations\BlogConfiguration.cs" />
+    <Compile Include="ModelConfigurations\BlogConfiguration.generated.cs" />
     <Compile Include="models\Blog.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

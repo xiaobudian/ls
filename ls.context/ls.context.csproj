@@ -50,6 +50,8 @@
     <Compile Include="DbContextBase.cs" />
     <Compile Include="DbContextInitializerBase.cs" />
     <Compile Include="DbContextManager.cs" />
+    <Compile Include="Defaults\DefaultDbContext.cs" />
+    <Compile Include="Defaults\DefaultDbContextInitializer.cs" />
     <Compile Include="EntityBase.cs" />
     <Compile Include="EntityConfigurationBase.cs" />
     <Compile Include="IContextTypeResolver.cs" />

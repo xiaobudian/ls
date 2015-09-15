@@ -13,7 +13,7 @@ namespace ls.webbase
     /// </summary>
     public class DataHandlerInitializer : IDataHandlerInitializer
     {
-        private IFunctionHandler _functionHandler;
+        //private IFunctionHandler _functionHandler;
         private IEntityInfoHandler _entityInfoHandler;
 
         /// <summary>
@@ -21,22 +21,22 @@ namespace ls.webbase
         /// </summary>
         public DataHandlerInitializer()
         {
-            FunctionHandler = new DefaultFunctionHandler();
+            //FunctionHandler = new DefaultFunctionHandler();
             EntityInfoHandler = new DefaultEntityInfoHandler();
         }
 
         /// <summary>
         /// 获取或设置 功能信息处理器
         /// </summary>
-        public IFunctionHandler FunctionHandler
-        {
-            get { return _functionHandler; }
-            set
-            {
-                _functionHandler = value;
-                OSharpContext.Current.FunctionHandler = value;
-            }
-        }
+        //public IFunctionHandler FunctionHandler
+        //{
+        //    get { return _functionHandler; }
+        //    set
+        //    {
+        //        _functionHandler = value;
+        //        OSharpContext.Current.FunctionHandler = value;
+        //    }
+        //}
 
         /// <summary>
         /// 获取或设置 数据实体信息处理器
@@ -56,7 +56,7 @@ namespace ls.webbase
         /// </summary>
         public void Initialize()
         {
-            FunctionHandler.Initialize();
+            //FunctionHandler.Initialize();
             EntityInfoHandler.Initialize();
         }
     }

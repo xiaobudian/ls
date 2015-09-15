@@ -48,6 +48,7 @@
   <ItemGroup>
     <Compile Include="Extensions\AutoMapperExtension.cs" />
     <Compile Include="Extensions\CollectionExtensions.cs" />
+    <Compile Include="Extensions\ExpressionExtensions.cs" />
     <Compile Include="Extensions\ParamterCheckExtensions.cs" />
     <Compile Include="Extensions\StringExtensions.cs" />
     <Compile Include="HashHelper.cs" />
