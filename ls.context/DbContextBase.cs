@@ -19,7 +19,20 @@ namespace ls.context
 
         private static string GetConnectionStringName()
         {
-            return ConfigurationManager.ConnectionStrings["default"].ToString();
+            var connection = ConfigurationManager.ConnectionStrings["default"];
+            if (connection != null)
+            {
+                return connection.ToString();
+            }
+            try
+            {
+                connection = ConfigurationManager.ConnectionStrings[1];
+                return connection.ToString();
+            }
+            catch
+            {
+                throw new Exception("请配置数据库连接字符串，默认为default，如果没有default则采用第一个.");
+            }
         }
 
 

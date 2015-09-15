@@ -34,9 +34,8 @@ namespace ls.web
 
             IFrameworkInitializer initializer = new FrameworkInitializer()
             {
-                MvcIocInitializer = new AutofacMvcIocInitializer()
-                //,
-                //WebApiIocInitializer = new AutofacWebApiIocInitializer()
+                MvcIocInitializer = new AutofacMvcIocInitializer(),
+                WebApiIocInitializer = new AutofacWebApiIocInitializer()
             };
             initializer.Initialize();
         }

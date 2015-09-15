@@ -78,20 +78,12 @@ namespace ls.webbase
 
             if (MvcIocInitializer != null)
             {
-                MvcIocInitializer.Initialize();
-                //var builder = new ContainerBuilder();
-                //builder.RegisterApiControllers(Assembly.GetExecutingAssembly());
-                //builder.RegisterControllers(Assembly.GetExecutingAssembly());
-                //var container = builder.Build();
-                //var resolver = new AutofacWebApiDependencyResolver(container);
-
-                //DependencyResolver.SetResolver(new AutofacDependencyResolver(container));
-                //GlobalConfiguration.Configuration.DependencyResolver = resolver;
+                MvcIocInitializer.Initialize();               
             }
-            //if (WebApiIocInitializer != null)
-            //{
-            //    WebApiIocInitializer.Initialize();
-            //}
+            if (WebApiIocInitializer != null)
+            {
+                WebApiIocInitializer.Initialize();
+            }
             //if (SignalRIocInitializer != null)
             //{
             //    SignalRIocInitializer.Initialize();

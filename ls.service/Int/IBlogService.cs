@@ -13,7 +13,7 @@ namespace ls.service.Int
 {
     public interface IBlogService : ILifetimeScopeDependency
     {
-        IQueryable<Blog> Blogs { get; set; }
+        IQueryable<Blog> Blogs { get; }
         bool CheckExists(Expression<Func<Blog, bool>> predicate, int id = 0);
         OperationResult Add(BlogDto dto);
         OperationResult Update(BlogDto dto);

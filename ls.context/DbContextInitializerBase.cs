@@ -82,7 +82,7 @@ namespace ls.context
             StorageMappingItemCollection mappingItemCollection = (StorageMappingItemCollection)objectContext.ObjectStateManager
                 .MetadataWorkspace.GetItemCollection(DataSpace.CSSpace);
             mappingItemCollection.GenerateViews(new List<EdmSchemaError>());
-            context.Dispose(); 
+            context.Dispose();
         }
     }
 
@@ -126,18 +126,14 @@ namespace ls.context
         /// </summary>
         private void EntityMappersInitialize()
         {
-            //if (MapperAssemblies.Count == 0)
-            //{
-            //    //throw new InvalidOperationException("上下文“{0}”初始化失败，请添加实体映射程序集".FormatWith(this.GetType().FullName));
-            //}
-
-          
-
             Type baseType = typeof(IEntityMapper);
-          
-            Type[] mapperTypes = AppDomain.CurrentDomain.GetAssemblies().SelectMany(assembly => assembly.GetTypes())
+            //加载所有的实体映射信息
+            Type[] mapperTypes = AppDomain.CurrentDomain.GetAssemblies()
+                .SelectMany(assembly => assembly.GetTypes())
                 .Where(type => baseType.IsAssignableFrom(type) && type != baseType && !type.IsAbstract).ToArray();
-            IEnumerable<IEntityMapper> entityMappers = mapperTypes.Select(type => Activator.CreateInstance(type) as IEntityMapper).ToList();
+            IEnumerable<IEntityMapper> entityMappers = mapperTypes
+                .Select(type => Activator.CreateInstance(type) as IEntityMapper)
+                .Distinct().ToList();
             entityMappers = EntityMappersFilter(entityMappers);
             IDictionary<Type, IEntityMapper> dict = new Dictionary<Type, IEntityMapper>();
             foreach (IEntityMapper mapper in entityMappers)

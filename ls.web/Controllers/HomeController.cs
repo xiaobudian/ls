@@ -9,12 +9,9 @@ namespace ls.web.Controllers
 {
     public class HomeController : Controller
     {
-        public IBlogService blogService { get; set; }
         public ActionResult Index()
         {
-            ViewBag.Title = "Home Page";
-
-            return View(blogService.Blogs);
+            return RedirectToAction("Index", "Blogs");
         }
     }
 }

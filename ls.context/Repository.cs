@@ -57,27 +57,12 @@ namespace ls.context
         /// <param name="entity">Entity</param>
         public virtual void Insert(TEntity entity)
         {
-            try
-            {
-                if (entity == null)
-                    throw new ArgumentNullException("entity");
+            if (entity == null)
+                throw new ArgumentNullException("entity");
 
-                this._dbSet.Add(entity);
+            this._dbSet.Add(entity);
 
-                this.UnitOfWork.SaveChanges();
-            }
-            catch (DbEntityValidationException dbEx)
-            {
-                var msg = string.Empty;
-
-                foreach (var validationErrors in dbEx.EntityValidationErrors)
-                    foreach (var validationError in validationErrors.ValidationErrors)
-                        msg += string.Format("Property: {0} Error: {1}", validationError.PropertyName, validationError.ErrorMessage) + Environment.NewLine;
-
-                var fail = new Exception(msg, dbEx);
-                //Debug.WriteLine(fail.Message, fail);
-                throw fail;
-            }
+            this.UnitOfWork.SaveChanges();
         }
 
         /// <summary>
@@ -86,28 +71,13 @@ namespace ls.context
         /// <param name="entities">Entities</param>
         public virtual void Insert(IEnumerable<TEntity> entities)
         {
-            try
-            {
-                if (entities == null)
-                    throw new ArgumentNullException("entities");
+            if (entities == null)
+                throw new ArgumentNullException("entities");
 
-                foreach (var entity in entities)
-                    this._dbSet.Add(entity);
+            foreach (var entity in entities)
+                this._dbSet.Add(entity);
 
-                this.UnitOfWork.SaveChanges();
-            }
-            catch (DbEntityValidationException dbEx)
-            {
-                var msg = string.Empty;
-
-                foreach (var validationErrors in dbEx.EntityValidationErrors)
-                    foreach (var validationError in validationErrors.ValidationErrors)
-                        msg += string.Format("Property: {0} Error: {1}", validationError.PropertyName, validationError.ErrorMessage) + Environment.NewLine;
-
-                var fail = new Exception(msg, dbEx);
-                //Debug.WriteLine(fail.Message, fail);
-                throw fail;
-            }
+            this.UnitOfWork.SaveChanges();
         }
 
         /// <summary>
@@ -116,25 +86,10 @@ namespace ls.context
         /// <param name="entity">Entity</param>
         public virtual void Update(TEntity entity)
         {
-            try
-            {
-                if (entity == null)
-                    throw new ArgumentNullException("entity");
+            if (entity == null)
+                throw new ArgumentNullException("entity");
 
-                this.UnitOfWork.SaveChanges();
-            }
-            catch (DbEntityValidationException dbEx)
-            {
-                var msg = string.Empty;
-
-                foreach (var validationErrors in dbEx.EntityValidationErrors)
-                    foreach (var validationError in validationErrors.ValidationErrors)
-                        msg += Environment.NewLine + string.Format("Property: {0} Error: {1}", validationError.PropertyName, validationError.ErrorMessage);
-
-                var fail = new Exception(msg, dbEx);
-                //Debug.WriteLine(fail.Message, fail);
-                throw fail;
-            }
+            this.UnitOfWork.SaveChanges();
         }
 
         /// <summary>
@@ -143,27 +98,12 @@ namespace ls.context
         /// <param name="entity">Entity</param>
         public virtual void Delete(TEntity entity)
         {
-            try
-            {
-                if (entity == null)
-                    throw new ArgumentNullException("entity");
+            if (entity == null)
+                throw new ArgumentNullException("entity");
 
-                this._dbSet.Remove(entity);
+            this._dbSet.Remove(entity);
 
-                this.UnitOfWork.SaveChanges();
-            }
-            catch (DbEntityValidationException dbEx)
-            {
-                var msg = string.Empty;
-
-                foreach (var validationErrors in dbEx.EntityValidationErrors)
-                    foreach (var validationError in validationErrors.ValidationErrors)
-                        msg += Environment.NewLine + string.Format("Property: {0} Error: {1}", validationError.PropertyName, validationError.ErrorMessage);
-
-                var fail = new Exception(msg, dbEx);
-                //Debug.WriteLine(fail.Message, fail);
-                throw fail;
-            }
+            this.UnitOfWork.SaveChanges();
         }
 
         /// <summary>
@@ -172,28 +112,13 @@ namespace ls.context
         /// <param name="entities">Entities</param>
         public virtual void Delete(IEnumerable<TEntity> entities)
         {
-            try
-            {
-                if (entities == null)
-                    throw new ArgumentNullException("entities");
+            if (entities == null)
+                throw new ArgumentNullException("entities");
 
-                foreach (var entity in entities)
-                    this._dbSet.Remove(entity);
+            foreach (var entity in entities)
+                this._dbSet.Remove(entity);
 
-                this.UnitOfWork.SaveChanges();
-            }
-            catch (DbEntityValidationException dbEx)
-            {
-                var msg = string.Empty;
-
-                foreach (var validationErrors in dbEx.EntityValidationErrors)
-                    foreach (var validationError in validationErrors.ValidationErrors)
-                        msg += Environment.NewLine + string.Format("Property: {0} Error: {1}", validationError.PropertyName, validationError.ErrorMessage);
-
-                var fail = new Exception(msg, dbEx);
-                //Debug.WriteLine(fail.Message, fail);
-                throw fail;
-            }
+            this.UnitOfWork.SaveChanges();
         }
 
         #endregion

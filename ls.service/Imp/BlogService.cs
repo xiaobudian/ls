@@ -13,7 +13,7 @@ namespace ls.service.Imp
 {
     public class BlogService : IBlogService
     {
-        public IQueryable<Blog> Blogs { get; set; }
+        public IQueryable<Blog> Blogs { get { return BlogRepository.Entities; } }
         public IRepository<Blog, int> BlogRepository { get; set; }
 
         public bool CheckExists(Expression<Func<Blog, bool>> predicate, int id = 0)
@@ -23,10 +23,27 @@ namespace ls.service.Imp
 
         public OperationResult Add(data.dtos.BlogDto dto)
         {
-            Blog blog = dto.MapTo<Blog>();
-            BlogRepository.Insert(blog);
-            int count = BlogRepository.UnitOfWork.SaveChanges();
-            return count > 0 ? new OperationResult(OperationResultType.Success, "添加博客成功") : OperationResult.NoChanged;
+            try
+            {
+                if (dto.title.IsNullOrEmpty() || dto.title.Trim().IsNullOrEmpty())
+                {
+                    return new OperationResult(OperationResultType.ValidError, "博客标题不能为空！");
+                }
+
+                Blog blog = dto.MapTo<Blog>();
+                blog.createTime = DateTime.Now;
+                BlogRepository.Insert(blog);
+                return new OperationResult(OperationResultType.Success, "添加博客成功！");
+            }
+            catch (Exception ex)
+            {
+                var msg = ex.Message;
+                //log 记录异常信息
+                //返回用户友好的提示
+                return new OperationResult(OperationResultType.Error, "添加博客失败！");
+
+            }
+
         }
 
         public OperationResult Update(data.dtos.BlogDto dto)
