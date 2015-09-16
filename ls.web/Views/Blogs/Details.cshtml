@@ -1,4 +1,4 @@
-﻿@model ls.data.models.Blog
+﻿@model ls.data.dtos.BlogDto
 
 @{
     ViewBag.Title = "Details";
@@ -21,6 +21,13 @@
     </dl>
 </div>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Edit", "Edit", new { id = Model.id }) |
     @Html.ActionLink("Back to List", "Index")
 </p>
+<p>
+    <input type="text" name="comment" placeholder="请输入评论" />
+    <input type="button" onclick="comment()" value="评论" />
+</p>
+<script>
+
+</script>

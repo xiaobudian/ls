@@ -6,11 +6,11 @@ using System.Threading.Tasks;
 
 namespace ls.data.ModelConfigurations
 {
-    public partial class BlogConfiguration
+    public partial class CommentConfiguration
     {
-        partial void BlogConfigurationAppend()
+        partial void CommentConfigurationAppend()
         {
-            HasMany(w => w.Comments);
+            HasRequired(w => w.Blog).WithMany(w => w.Comments);
         }
     }
 }

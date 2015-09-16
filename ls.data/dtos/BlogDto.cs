@@ -10,6 +10,7 @@ namespace ls.data.dtos
 {
     public class BlogDto
     {
+        public int id { get; set; }
         //[Required(ErrorMessage = "*标题不能为空！")]
         [Description("标题")]
         [Display(Name = "标题")]

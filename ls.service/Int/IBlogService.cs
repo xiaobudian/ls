@@ -2,6 +2,8 @@
 using ls.core;
 using ls.data.dtos;
 using ls.data.models;
+using ls.data.query;
+using PagedList;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,12 +13,8 @@ using System.Threading.Tasks;
 
 namespace ls.service.Int
 {
-    public interface IBlogService : ILifetimeScopeDependency
+    public interface IBlogService : ILifetimeScopeDependency, IServiceBase<Blog, BlogDto>
     {
-        IQueryable<Blog> Blogs { get; }
-        bool CheckExists(Expression<Func<Blog, bool>> predicate, int id = 0);
-        OperationResult Add(BlogDto dto);
-        OperationResult Update(BlogDto dto);
-        OperationResult Delete(int id);
+        IPagedList<BlogDto> QueryData(BlogQueryInfo bqi);
     }
 }

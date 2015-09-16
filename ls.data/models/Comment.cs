@@ -8,13 +8,10 @@ using System.Threading.Tasks;
 
 namespace ls.data.models
 {
-    public class Blog : EntityBase<int>
+    public class Comment : EntityBase<int>
     {
         [Required]
-        public string title { get; set; }
-
-        public DateTime createTime { get; set; }
-
-        public virtual ICollection<Comment> Comments { get; set; }
+        public string content { get; set; }
+        public virtual Blog Blog { get; set; }
     }
 }
