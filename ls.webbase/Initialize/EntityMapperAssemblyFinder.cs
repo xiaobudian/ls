@@ -2,10 +2,8 @@
 using System.Linq;
 using System.Reflection;
 using ls.core;
-using ls.context;
 
-
-namespace ls.webbase
+namespace ls.web.core
 {
     /// <summary>
     /// 实体映射程序集查找器

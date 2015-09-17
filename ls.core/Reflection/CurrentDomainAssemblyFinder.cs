@@ -26,7 +26,7 @@ namespace ls.core
         /// <returns></returns>
         public Assembly[] FindAll()
         {
-            return AppDomain.CurrentDomain.GetAssemblies().Where(w => w.FullName.StartsWith("ls.")).ToArray();
+            return AppDomain.CurrentDomain.GetAssemblies();
         }
     }
 }

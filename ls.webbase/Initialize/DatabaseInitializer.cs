@@ -1,12 +1,11 @@
-﻿using ls.context;
-using ls.core;
+﻿using ls.core;
 using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Reflection;
 using System.Linq;
 
-namespace ls.webbase
+namespace ls.web.core
 {
     /// <summary>
     /// 数据库初始化器，从程序集中反射实体映射类并加载到相应上下文类中，进行上下文类型的初始化

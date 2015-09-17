@@ -1,7 +1,7 @@
 ﻿using ls.autofac;
 using ls.core;
 using ls.data;
-using ls.webbase;
+using ls.web.core;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -22,16 +22,12 @@ namespace ls.web
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
-
-            DtoMappers.MapperRegister();
+                        
             Initialize();
         }
 
         public static void Initialize()
         {
-            //ICacheProvider provider = new RuntimeMemoryCacheProvider();
-            //CacheManager.SetProvider(provider, CacheLevel.First);
-
             IFrameworkInitializer initializer = new FrameworkInitializer()
             {
                 MvcIocInitializer = new AutofacMvcIocInitializer(),

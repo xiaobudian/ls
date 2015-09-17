@@ -1,10 +1,8 @@
 ﻿using System;
 using System.Reflection;
 using ls.core;
-using ls.context;
 
-
-namespace ls.webbase
+namespace ls.web.core
 {
     /// <summary>
     /// 依赖注入初始化器基类，从程序集中反射进行依赖注入接口与实现的注册

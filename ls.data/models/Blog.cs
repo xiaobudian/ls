@@ -1,4 +1,6 @@
-﻿using ls.context;
+﻿using AutoMapper;
+using ls.core;
+using ls.data.dtos;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -16,5 +18,6 @@ namespace ls.data.models
         public DateTime createTime { get; set; }
 
         public virtual ICollection<Comment> Comments { get; set; }
+       
     }
 }

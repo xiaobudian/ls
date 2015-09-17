@@ -165,6 +165,7 @@
     <Content Include="Global.asax" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <None Include="Properties\PublishProfiles\leliao-ls.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -176,7 +177,9 @@
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
@@ -211,17 +214,9 @@
     <Content Include="Scripts\jquery-1.10.2.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\ls.autofac\ls.autofac.csproj">
-      <Project>{65238949-8f9a-475e-843e-c4628b178bdd}</Project>
-      <Name>ls.autofac</Name>
-    </ProjectReference>
     <ProjectReference Include="..\ls.common\ls.common.csproj">
       <Project>{896c7c08-82c9-4ab6-bbfc-e8bd4ff01307}</Project>
       <Name>ls.common</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\ls.context\ls.context.csproj">
-      <Project>{66577dbe-e0af-4e87-a795-67682b472815}</Project>
-      <Name>ls.context</Name>
     </ProjectReference>
     <ProjectReference Include="..\ls.core\ls.core.csproj">
       <Project>{eaefa544-df60-44f8-8f63-ee1d5de14e60}</Project>
@@ -231,13 +226,9 @@
       <Project>{86467968-4a59-44f9-aa3b-50ec21cbea41}</Project>
       <Name>ls.data</Name>
     </ProjectReference>
-    <ProjectReference Include="..\ls.service\ls.service.csproj">
-      <Project>{652a111d-be98-4bee-a11a-8c28a819cb05}</Project>
-      <Name>ls.service</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\ls.webbase\ls.webbase.csproj">
+    <ProjectReference Include="..\ls.webbase\ls.web.core.csproj">
       <Project>{9eb29d4b-70fe-4c49-9949-4419ebdb9ca6}</Project>
-      <Name>ls.webbase</Name>
+      <Name>ls.web.core</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>

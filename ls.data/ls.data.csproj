@@ -58,7 +58,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="dtos\BlogDto.cs" />
-    <Compile Include="DtoMappers.cs" />
+    <Compile Include="Imp\BlogService.cs" />
+    <Compile Include="Int\IBlogService.cs" />
+    <Compile Include="Int\IServiceBase.cs" />
     <Compile Include="ModelConfigurations\BlogConfiguration.cs" />
     <Compile Include="ModelConfigurations\BlogConfiguration.generated.cs" />
     <Compile Include="ModelConfigurations\CommentConfiguration.cs" />
@@ -70,17 +72,25 @@
     <Compile Include="query\QueryInfoBase.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\ls.context\ls.context.csproj">
-      <Project>{66577dbe-e0af-4e87-a795-67682b472815}</Project>
-      <Name>ls.context</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\PagedList.css" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ls.common\ls.common.csproj">
+      <Project>{896c7c08-82c9-4ab6-bbfc-e8bd4ff01307}</Project>
+      <Name>ls.common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ls.core\ls.core.csproj">
+      <Project>{eaefa544-df60-44f8-8f63-ee1d5de14e60}</Project>
+      <Name>ls.core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ls.webbase\ls.web.core.csproj">
+      <Project>{9eb29d4b-70fe-4c49-9949-4419ebdb9ca6}</Project>
+      <Name>ls.web.core</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

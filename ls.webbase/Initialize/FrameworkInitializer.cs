@@ -8,7 +8,7 @@ using System.Web.Mvc;
 using System.Web.Http;
 
 
-namespace ls.webbase
+namespace ls.web.core
 {
     /// <summary>
     /// 框架初始化器基类
@@ -59,7 +59,7 @@ namespace ls.webbase
         /// <summary>
         /// 获取或设置 数据处理初始化器
         /// </summary>
-        public IDataHandlerInitializer DataHandlerInitializer { get; set; }
+        //public IDataHandlerInitializer DataHandlerInitializer { get; set; }
 
         /// <summary>
         /// 执行初始化

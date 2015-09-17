@@ -1,4 +1,4 @@
-﻿using ls.context;
+﻿using ls.core;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;

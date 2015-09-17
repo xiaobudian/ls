@@ -116,10 +116,6 @@
       <Project>{896c7c08-82c9-4ab6-bbfc-e8bd4ff01307}</Project>
       <Name>ls.common</Name>
     </ProjectReference>
-    <ProjectReference Include="..\ls.context\ls.context.csproj">
-      <Project>{66577dbe-e0af-4e87-a795-67682b472815}</Project>
-      <Name>ls.context</Name>
-    </ProjectReference>
     <ProjectReference Include="..\ls.core\ls.core.csproj">
       <Project>{eaefa544-df60-44f8-8f63-ee1d5de14e60}</Project>
       <Name>ls.core</Name>
@@ -128,12 +124,15 @@
       <Project>{4db51280-656b-44a5-9114-c81590643d32}</Project>
       <Name>ls.utility</Name>
     </ProjectReference>
-    <ProjectReference Include="..\ls.webbase\ls.webbase.csproj">
+    <ProjectReference Include="..\ls.webbase\ls.web.core.csproj">
       <Project>{9eb29d4b-70fe-4c49-9949-4419ebdb9ca6}</Project>
-      <Name>ls.webbase</Name>
+      <Name>ls.web.core</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>xcopy $(TargetPath) $(SolutionDir)lib\ /y</PostBuildEvent>
+  </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">

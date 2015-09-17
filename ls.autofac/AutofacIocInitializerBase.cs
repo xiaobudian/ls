@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 using System.Web.Mvc;
 using Autofac;
 using ls.core;
-using ls.webbase;
+using ls.web.core;
 
 namespace ls.autofac
 {

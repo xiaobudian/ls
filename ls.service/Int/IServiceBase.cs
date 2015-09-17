@@ -7,7 +7,7 @@ using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ls.service.Int
+namespace ls.services.Int
 {
     public interface IServiceBase<TEntity, TDto>
         where TEntity : new()

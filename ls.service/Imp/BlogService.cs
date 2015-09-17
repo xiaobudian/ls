@@ -3,13 +3,13 @@ using ls.context;
 using ls.data.dtos;
 using ls.data.models;
 using ls.data.query;
-using ls.service.Int;
+using ls.services.Int;
 using PagedList;
 using System;
 using System.Linq;
 using System.Linq.Expressions;
 
-namespace ls.service.Imp
+namespace ls.services.Imp
 {
     public class BlogService : IBlogService
     {
