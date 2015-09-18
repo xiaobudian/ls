@@ -6,11 +6,11 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
-using ls.data.models;
-using ls.data.dtos;
+using ls.web.service.models;
+using ls.web.service.dtos;
 using ls.common;
-using ls.data.query;
-using ls.data.Int;
+using ls.web.service.query;
+using ls.web.service.Int;
 
 namespace ls.web.Controllers
 {

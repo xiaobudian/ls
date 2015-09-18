@@ -1,11 +1,6 @@
-﻿using ls.autofac;
-using ls.core;
-using ls.data;
+﻿using ls.core;
 using ls.web.core;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+using ls.web.service;
 using System.Web.Http;
 using System.Web.Mvc;
 using System.Web.Optimization;
@@ -28,6 +23,8 @@ namespace ls.web
 
         public static void Initialize()
         {
+            DtoMappers.RegisterDtoMapper();
+
             IFrameworkInitializer initializer = new FrameworkInitializer()
             {
                 MvcIocInitializer = new AutofacMvcIocInitializer(),
