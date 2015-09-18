@@ -1,0 +1,40 @@
+﻿<#+
+    // <copyright file="ConfigurationAppendTemplate.tt" company="">
+    //  Copyright © . All Rights Reserved.
+    // </copyright>
+
+    public class ConfigurationAppendTemplate : CSharpTemplate
+    {
+        private string _namespace;
+        private string _entity;  
+        private string _tkey;
+        private string className 
+        { 
+            get {   return _entity + "Configuration"; }
+        }
+
+        public ConfigurationAppendTemplate(string ns, string entity,string tkey)  
+        {  
+            _namespace = ns;
+            _entity = entity;  
+            _tkey = tkey;
+        }  
+
+        public override string TransformText()
+        {
+            base.TransformText();
+#>
+namespace <#=            _namespace #>
+{
+	public partial class <#=            className #>
+	{
+		partial void <#=            _entity #>ConfigurationAppend()
+        {
+        }
+	}
+}
+<#+
+            return this.GenerationEnvironment.ToString();
+        }
+    }
+#>

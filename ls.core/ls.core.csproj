@@ -51,6 +51,7 @@
     <Compile Include="Data\EntityConfigurationBase.cs" />
     <Compile Include="Data\IContextTypeResolver.cs" />
     <Compile Include="Data\IEntity.cs" />
+    <Compile Include="Data\IEntityBase.cs" />
     <Compile Include="Data\IEntityDto.cs" />
     <Compile Include="Data\IEntityMapper.cs" />
     <Compile Include="Data\IRepository.cs" />

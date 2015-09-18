@@ -18,7 +18,7 @@ namespace ls.core
     /// <summary>
     /// 数据模型接口
     /// </summary>
-    public interface IEntity<TKey>
+    public interface IEntity<TKey> : IEntityBase
     {
         /// <summary>
         /// 获取或设置 实体唯一标识，主键

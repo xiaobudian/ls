@@ -1,0 +1,45 @@
+﻿<#+
+    public class ConfigurationTemplate : CSharpTemplate
+    {
+        private string _namespace;
+        private string _entity;  
+        private string _tkey;
+        private string className 
+        { 
+            get {   return _entity + "Configuration"; }
+        }
+
+        public ConfigurationTemplate(string ns, string entity,string tkey)  
+        {  
+            _namespace = ns;
+            _entity = entity;  
+            _tkey = tkey;
+        }  
+
+        public override string TransformText()
+        {
+            base.TransformText();
+#>
+// <#=            className #>
+// 刘帅   849351660@qq.com
+// <#=            DateTime.Now #> Copyright © . All Rights Reserved.
+using <#=            _namespace #>.models;
+using System;
+using ls.core;
+
+namespace <#=            _namespace #>.configurations
+{
+    public partial class <#=            className #> : EntityConfigurationBase<<#=            _entity #>, <#=            _tkey #>>
+    {
+        public <#=            className #>()
+        {
+            <#=            className #>Append();
+        }
+		partial void <#=            className #>Append();
+    }
+}
+<#+
+            return this.GenerationEnvironment.ToString();
+        }
+    }
+#>

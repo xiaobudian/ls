@@ -1,0 +1,39 @@
+﻿<#@ template debug="false" hostspecific="false" language="C#" #>  
+<#@ assembly name="System.Core" #>  
+<#@ assembly Name="$(TargetPath)" #>  
+<#@ assembly Name="$(TargetDir)\ls.core.dll" #>  
+<#@ import namespace="System.IO" #>  
+<#@ import namespace="System.Linq" #>  
+<#@ import namespace="System.Text" #>  
+<#@ import namespace="System.Collections.Generic" #>  
+<#@ import namespace="ls.core" #> 
+<#@ include file="T4Toolbox.tt" #>  
+<#@ include file="ConfigurationTemplate.tt" #>  
+<#@ include file="ConfigurationAppendTemplate.tt" #>  
+<#  
+    string ns = "ls.web.service";
+    string curPath = Path.GetDirectoryName(Host.TemplateFile);  
+    string projectPath =curPath.Substring(0, curPath.IndexOf(@"\T4"));  
+    string destPath = Path.Combine(projectPath, "configurations");  
+    if(!Directory.Exists(destPath))  
+    {  
+        Directory.CreateDirectory(destPath);  
+    }  
+    var assemblies = AppDomain.CurrentDomain.GetAssemblies();
+    var entities=  assemblies.SelectMany(assembly =>
+        assembly.GetTypes().Where(type =>
+        typeof(IEntityBase).IsAssignableFrom(type) && !type.IsAbstract))
+        .Distinct().ToArray();
+    foreach(var type in entities)  
+    {  
+        ConfigurationTemplate template = new ConfigurationTemplate(ns,type.Name,"Int32");  
+        string fileName = string.Format(@"{0}\{1}.cs", destPath, type.Name + "Configuration.auto");  
+        template.Output.Encoding = Encoding.UTF8;  
+        template.RenderToFile(fileName);  
+
+        //ConfigurationAppendTemplate template2 = new ConfigurationAppendTemplate(ns,type.Name,"Int32");  
+        //fileName = string.Format(@"{0}\{1}.cs", destPath, type.Name + "Configuration");  
+        //template2.Output.Encoding = Encoding.UTF8;  
+        //template2.RenderToFile(fileName);  
+    }  
+ #> 
